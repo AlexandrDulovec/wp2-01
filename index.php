@@ -4,8 +4,8 @@ $finalamount = 0 ;
 define('EUR_CZK', 25);
 $sub = filter_input(INPUT_POST, 'odeslat');
 $switch =  filter_input(INPUT_POST, 'switch');
-$měnaz;
-$měnado;
+$convertfrom;
+$convertto;
 $text = "Převod proběhnul : " ;
 ?>
 <!DOCTYPE html>
@@ -22,16 +22,16 @@ if (isset($sub)) {
     switch ($switch) {
     case 'czk_eur': 
         $finalamount = $amount / EUR_CZK ;
-        $měnaz = " CZK " ;
-        $měnado = " EUR " ;
+        $convertfrom = " CZK " ;
+        $convertto = " EUR " ;
         break;
     case 'eur_czk': 
         $finalamount = $amount * EUR_CZK ;
-        $měnaz = " EUR " ;
-        $měnado = " CZK " ;
+        $convertfrom = " EUR " ;
+        $convertto = " CZK " ;
         break;                    }
 
-$all =$text . $amount . $měnaz . " = " . $final . $měnado ?>
+$all =$text . $amount . $convertfrom . " = " . $final . $convertto ?>
 <?= $all ?>
 <?php
 } else { ?>
